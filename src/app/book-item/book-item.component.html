@@ -1,0 +1,5 @@
+<div>
+  <input type="checkbox" [checked] = "book.completed" (change)="onToggleCompletion()">
+  <span [class.completed] = "book.completed">{{ book.title }}</span>
+  <button (click) = "onRemove()">Remove</button>
+</div>

@@ -1,26 +1,34 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BookListComponent } from './book-list/book-list.component';
-import { BookFormComponent } from './book-form/book-form.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from "@angular/forms";
+import {RouterModule, Routes} from "@angular/router";
+
+import {AppComponent} from './app.component';
+import {BookListComponent} from './book-list/book-list.component';
+import {BookFormComponent} from './book-form/book-form.component';
+import { BookItemComponent } from './book-item/book-item.component';
+
+//Définir les routes
+const routes: Routes = [
+  {path: '', component: BookListComponent},
+  {path: 'add-Book', component: BookFormComponent}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     BookListComponent,
-    BookFormComponent
+    BookFormComponent,
+    BookItemComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+}

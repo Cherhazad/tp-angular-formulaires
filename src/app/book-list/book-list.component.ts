@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Book} from "../../book.model";
 import {BookService} from "../book.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-book-list',
@@ -8,18 +9,21 @@ import {BookService} from "../book.service";
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
+  bookArray$: Observable<Book[]>;
 
-  books: Book[] = [];
-
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService) {
+    this.bookArray$ = this.bookService.getBooks();
+  }
 
   ngOnInit() {
-    this.books = this.bookService.getBooks();
+    this.bookArray$ = this.bookService.getBooks();
   }
 
-  deleteBook(id: number) {
+  onToggleTodoCompletion(id: number) {
+    this.bookService.toggleBookCompletion(id);
+  }
+
+  onDeleteBook(id: number) {
     this.bookService.deleteBook(id);
-    this.books = this.bookService.getBooks();
   }
-
 }

@@ -1,13 +1,16 @@
 <h2>Ajouter un livre</h2>
-<form (ngSubmit) = "addBook()">
+<form>
   <label for="title">Titre:</label>
-  <input type="text" id="title" [(ngModel)]="title" name="title" required>
+  <input type="text" id="title" [(ngModel)]="newBookTitle" name="title" required>
   <br>
   <label for="author">Auteur:</label>
-  <input type="text" id="author" [(ngModel)] = "author" name ="author" required>
+  <input type="text" id="author" [(ngModel)] = "newBookAuthor" name ="author" required>
   <br>
   <label for="year">Année de publication:</label>
-  <input type="number" id="year" [(ngModel)] = "year" name ="year" required>
+  <input type="number" id="year" [(ngModel)] = "newBookYear" name ="year" required>
   <br>
-  <button type="submit">Ajouter</button>
+  <label for="genre">Genre:</label>
+  <input type="text" id="genre" [(ngModel)] = "newBookGenre" name ="genre" required>
+  <br>
+  <button (click) = "onAddBook()">Ajouter</button>
 </form>

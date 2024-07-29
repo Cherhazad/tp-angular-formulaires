@@ -1,7 +1,7 @@
-<h2>Liste des livres</h2>
+<app-book-form></app-book-form>
+<h2>Liste de livres</h2>
 <ul>
-  <li *ngFor = "let book of books">
-    {{book.title}} ({{book.author}} - {{book.year}})
-    <button (click)="deleteBook(book.id)">Supprimer</button>
+  <li *ngFor="let book of bookArray$ | async">
+    <app-book-item [book]="book" (toggleCompletion)="onToggleTodoCompletion($event)" (remove)="onDeleteBook($event)"></app-book-item>
   </li>
 </ul>
